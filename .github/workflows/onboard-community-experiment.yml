@@ -3,7 +3,6 @@ name: Onboard Community Experiment
 on:
   issues:
     types: [opened]
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,7 +15,7 @@ concurrency:
 
 jobs:
   onboard:
-    if: contains(github.event.issue.body, '<!-- community-experiment:onboarding') || contains(github.event.issue.body, '### Name of your branch')
+    if: contains(github.event.issue.body, '<!-- community-experiment:onboarding')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -136,10 +135,10 @@ jobs:
 
           How to run:
 
-          \`\`\`bash
+          ```bash
           python marin/run/ray_run.py -- \\
             python -m ${{ steps.parse.outputs.import_path }}
-          \`\`\`
+          ```
           EOF
 
           git add "$DEST"
