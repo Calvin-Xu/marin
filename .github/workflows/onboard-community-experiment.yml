@@ -177,13 +177,41 @@ jobs:
             const branch = '${{ steps.create.outputs.branch }}';
             const dest = '${{ steps.create.outputs.dest }}';
             const importPath = '${{ steps.parse.outputs.import_path }}';
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const author = context.payload.issue?.user?.login || 'your-github-username';
             const body = [
               "Welcome! Your branch is ready.",
               "",
-              `- Branch & Starter File: https://github.com/${context.repo.owner}/${context.repo.repo}/tree/${branch}/${dest}`,
+              `- Branch & Starter File: https://github.com/${owner}/${repo}/tree/${branch}/${dest}`,
               `- PR: ${prUrl}`,
               "",
-              "Run locally:",
+              "## Next Steps",
+              "",
+              `1. **[Fork](${`https://github.com/${owner}/${repo}/fork`}) the repository`,
+              "",
+              "2. **Check out your branch and find your starter code**",
+              "",
+              "```bash",
+              `git clone https://github.com/${author}/${repo}.git`,
+              `cd ${repo}`,
+              `git remote add upstream https://github.com/${owner}/${repo}.git`,
+              `git fetch upstream ${branch}`,
+              `git checkout -b ${branch} --track upstream/${branch}`,
+              `git push -u origin ${branch}`,
+              "",
+              "# set up Python env",
+              "uv venv --python 3.11",
+              ". .venv/bin/activate",
+              "uv sync",
+              "",
+              `cd ${dest}`,
+              `echo "Welcome! You're in your starter directory: $(pwd)"`,
+              "```",
+              "",
+              "3. Start hacking!",
+              "",
+              "Run your starter code locally:",
               "```bash",
               "python marin/run/ray_run.py -- \\",
               `  python -m ${importPath}`,
