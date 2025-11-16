@@ -19,9 +19,6 @@ This file is intentionally self-contained:
 - Defines a compact, Llama-ish transformer that implements Levanter's LmHeadModel
 - Provides a ready-to-run speedrun sweep across multiple model sizes
 
-The onboarding workflow will duplicate this file into your branch and fill in
-the placeholders for author, branch name, description, and import path.
-
 How to run:
   1) Set env vars (WANDB_API_KEY, HF_TOKEN, etc.) as in the tutorial:
      https://marin.readthedocs.io/en/latest/tutorials/submitting-speedrun/
@@ -350,7 +347,7 @@ class HackableLMHeadModel(
         return self.embeddings.token_embeddings.weight if self.lm_head is None else self.lm_head.weight
 
     def resize_vocab(self, new_size: int, key: PRNGKeyArray | None = None) -> "HackableLMHeadModel":
-        pass
+        raise NotImplementedError("resize_vocab is not implemented for HackableLMHeadModel")
 
 
 # =========================
@@ -360,7 +357,7 @@ class HackableLMHeadModel(
 AUTHOR = Author(
     name=SUBMISSION_AUTHOR_NAME,
     affiliation=SUBMISSION_AUTHOR_AFFILIATION,
-    url=(None if SUBMISSION_AUTHOR_URL in ("", "__SUBMISSION_AUTHOR_URL__") else SUBMISSION_AUTHOR_URL),
+    url=(SUBMISSION_AUTHOR_URL or None),
 )
 
 
@@ -530,5 +527,3 @@ if __name__ == "__main__":
         name, cfg = build_run(s, use_gpu=use_gpu)
         steps.extend(default_speedrun(name, cfg))
     executor_main(steps=steps, description=SUBMISSION_DESCRIPTION)
-
-
