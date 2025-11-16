@@ -51,4 +51,4 @@ body:
       pattern: '^[a-z0-9-]+$'
   - type: markdown
     attributes:
-      value: "<!-- community-experiment:onboarding v1 -->"
+      value: "Please wait a few seconds for MarinBot to set up and comment on your issue:"
