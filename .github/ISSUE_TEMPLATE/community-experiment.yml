@@ -20,13 +20,6 @@ body:
       label: Link to your profile/site
     validations:
       required: true
-  - type: input
-    id: title
-    attributes:
-      label: Experiment Title
-      placeholder: e.g., The effects of QK Normalization
-    validations:
-      required: true
   - type: textarea
     id: description
     attributes:
