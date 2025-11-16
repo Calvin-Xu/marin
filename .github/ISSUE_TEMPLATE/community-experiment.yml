@@ -6,18 +6,21 @@ body:
     id: author_name
     attributes:
       label: Your name
+      placeholder: e.g., Calvin Xu
     validations:
       required: true
   - type: input
     id: affiliation
     attributes:
       label: Affiliation
+      placeholder: e.g., Stanford University
     validations:
       required: true
   - type: input
     id: url
     attributes:
       label: Link to your profile/site
+      placeholder: example.com
     validations:
       required: true
   - type: textarea
