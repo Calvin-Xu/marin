@@ -40,6 +40,9 @@ body:
       description: What are you trying to learn or achieve? What do you expect to find before running the experiment?
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: "MarinBot will set up your branch and comment with the next steps."
   - type: input
     id: branch_name
     attributes:
@@ -48,7 +51,4 @@ body:
       description: Lowercase letters, numbers, hyphens only.
     validations:
       required: true
-      pattern: '^[a-z0-9-]+$'
-  - type: markdown
-    attributes:
-      value: "Please wait a few seconds for MarinBot to set up your branch and comment on your issue."
+      pattern: "^[a-z0-9-]+$"
