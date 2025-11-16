@@ -2,7 +2,7 @@ name: Onboard Community Experiment
 
 on:
   issues:
-    types: [opened, edited]
+    types: [opened]
   workflow_dispatch:
 
 permissions:
@@ -92,6 +92,11 @@ jobs:
           else
             git checkout -b "$BRANCH"
           fi
+
+          # Configure committer identity for this repo
+          git config user.name "github-actions[bot]"
+          # https://github.com/orgs/community/discussions/26560
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           DEST="experiments/speedrun/${DIR}"
           mkdir -p "$DEST"
