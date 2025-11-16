@@ -109,24 +109,24 @@ jobs:
             SUBMISSION_DESCRIPTION="${{ steps.parse.outputs.description }}" \
             SUBMISSION_AUTHOR_NAME="${{ steps.parse.outputs.author_name }}" \
             SUBMISSION_AUTHOR_AFFILIATION="${{ steps.parse.outputs.affiliation }}" \
-            SUBMISSION_AUTHOR_URL="${{ steps.parse.outputs.url }}" \
-            python - "$DEST/main.py" <<'PY'
-            import io, os, sys
-            p = sys.argv[1]
-            with io.open(p, 'r', encoding='utf-8') as f:
-                s = f.read()
-            replacements = {
-                "__SUBMISSION_IMPORT_PATH__": os.environ.get("SUBMISSION_IMPORT_PATH", ""),
-                "__SUBMISSION_BRANCH__": os.environ.get("SUBMISSION_BRANCH", ""),
-                "__SUBMISSION_DESCRIPTION__": os.environ.get("SUBMISSION_DESCRIPTION", ""),
-                "__SUBMISSION_AUTHOR_NAME__": os.environ.get("SUBMISSION_AUTHOR_NAME", ""),
-                "__SUBMISSION_AUTHOR_AFFILIATION__": os.environ.get("SUBMISSION_AUTHOR_AFFILIATION", ""),
-                "__SUBMISSION_AUTHOR_URL__": os.environ.get("SUBMISSION_AUTHOR_URL", ""),
-            }
-            for needle, value in replacements.items():
-                s = s.replace(needle, value)
-            with io.open(p, 'w', encoding='utf-8') as f:
-                f.write(s)
+          SUBMISSION_AUTHOR_URL="${{ steps.parse.outputs.url }}" \
+          python - "$DEST/main.py" <<-'PY'
+		import io, os, sys
+		p = sys.argv[1]
+		with io.open(p, 'r', encoding='utf-8') as f:
+			s = f.read()
+		replacements = {
+			"__SUBMISSION_IMPORT_PATH__": os.environ.get("SUBMISSION_IMPORT_PATH", ""),
+			"__SUBMISSION_BRANCH__": os.environ.get("SUBMISSION_BRANCH", ""),
+			"__SUBMISSION_DESCRIPTION__": os.environ.get("SUBMISSION_DESCRIPTION", ""),
+			"__SUBMISSION_AUTHOR_NAME__": os.environ.get("SUBMISSION_AUTHOR_NAME", ""),
+			"__SUBMISSION_AUTHOR_AFFILIATION__": os.environ.get("SUBMISSION_AUTHOR_AFFILIATION", ""),
+			"__SUBMISSION_AUTHOR_URL__": os.environ.get("SUBMISSION_AUTHOR_URL", ""),
+		}
+		for needle, value in replacements.items():
+			s = s.replace(needle, value)
+		with io.open(p, 'w', encoding='utf-8') as f:
+			f.write(s)
           PY
           else
             echo "Starter already exists at $DEST/main.py; leaving as-is."
