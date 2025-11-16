@@ -136,7 +136,7 @@ jobs:
           How to run:
 
           ```bash
-          python marin/run/ray_run.py -- \\
+          python marin/run/ray_run.py -- \
             python -m ${{ steps.parse.outputs.import_path }}
           ```
           EOF
@@ -156,7 +156,7 @@ jobs:
             const issue = context.payload.issue;
             const head = '${{ steps.create.outputs.branch }}';
             const title = `Community experiment: ${'${{ steps.parse.outputs.branch_name }}'}`;
-            const body = `Closes #${issue.number}\n\nAuto-generated from community submission.\n\nHow to run:\n\`\`\`bash\npython marin/run/ray_run.py -- \\\n  python -m ${'${{ steps.parse.outputs.import_path }}'}\n\`\`\``;
+            const body = `Closes #${issue.number} (auto-generated)\n\nHow to run:\n\`\`\`bash\npython marin/run/ray_run.py -- \\\n  python -m ${'${{ steps.parse.outputs.import_path }}'}\n\`\`\``;
             const base = context.payload.repository?.default_branch || 'main';
             const pr = await github.rest.pulls.create({
               owner: context.repo.owner,
@@ -175,11 +175,12 @@ jobs:
           script: |
             const prUrl = '${{ steps.pr.outputs.url }}';
             const branch = '${{ steps.create.outputs.branch }}';
+            const dest = '${{ steps.create.outputs.dest }}';
             const importPath = '${{ steps.parse.outputs.import_path }}';
             const body = [
               "Welcome! Your branch is ready.",
               "",
-              `- Branch: https://github.com/${context.repo.owner}/${context.repo.repo}/tree/${branch}`,
+              `- Branch & Starter File: https://github.com/${context.repo.owner}/${context.repo.repo}/tree/${branch}/${dest}`,
               `- PR: ${prUrl}`,
               "",
               "Run locally:",
