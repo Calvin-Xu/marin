@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   onboard:
-    if: contains(github.event.issue.body, '<!-- community-experiment:onboarding')
+    if: contains(join(fromJson(toJson(github.event.issue.labels)).*.name, ','), 'community-experiment-submission') || contains(github.event.issue.body, '<!-- community-experiment:onboarding')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
