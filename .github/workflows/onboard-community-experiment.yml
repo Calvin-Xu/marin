@@ -113,7 +113,7 @@ jobs:
 
           TMP_PY="$(mktemp)"
           # Strip 12 leading spaces from the embedded Python, write to temp file (keeps YAML tidy)
-          sed -e 's/^ \{12\}//' > "$TMP_PY" <<'PY'
+          sed -e 's/^ \{10\}//' > "$TMP_PY" <<'PY'
           import io, os, sys
           p = sys.argv[1]
           with io.open(p, 'r', encoding='utf-8') as f:
