@@ -4,7 +4,7 @@ labels: ["community-experiment-submission"]
 body:
   - type: markdown
     attributes:
-      value: "Welcome to Marin! Please tell us who you are, what your experiment is, and what you are trying to investigate. Your branch and starter code will be automatically set up."
+      value: "Welcome to Marin! Please enter the title of your experiment. Tell us who you are, what your experiment is, and what you are trying to investigate. Your branch and starter code will be automatically set up."
   - type: input
     id: author_name
     attributes:
