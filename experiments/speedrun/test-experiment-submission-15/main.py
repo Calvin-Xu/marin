@@ -23,7 +23,8 @@ How to run:
   1) Set env vars (WANDB_API_KEY, HF_TOKEN, etc.) as in the tutorial:
      https://marin.readthedocs.io/en/latest/tutorials/submitting-speedrun/
   2) From repo root:
-       python marin/run/ray_run.py -- python -m __SUBMISSION_IMPORT_PATH__
+       python marin/run/ray_run.py -- \\
+         python -m experiments.speedrun.test-experiment-submission-15.main
   3) Optional: SR_USE_GPU=1 to use GPU resource presets.
 """
 
@@ -72,11 +73,11 @@ silence_transformer_nag()
 # Submission metadata (filled by onboarding)
 # =========================
 # The onboarding workflow replaces these placeholders before committing the file.
-SUBMISSION_BRANCH = "__SUBMISSION_BRANCH__"
-SUBMISSION_DESCRIPTION = "__SUBMISSION_DESCRIPTION__"
-SUBMISSION_AUTHOR_NAME = "__SUBMISSION_AUTHOR_NAME__"
-SUBMISSION_AUTHOR_AFFILIATION = "__SUBMISSION_AUTHOR_AFFILIATION__"
-SUBMISSION_AUTHOR_URL = "__SUBMISSION_AUTHOR_URL__"
+SUBMISSION_BRANCH = "calvin-xu/test-experiment-submission-15-22"
+SUBMISSION_DESCRIPTION = "We'll do what everyone else does but 10x."
+SUBMISSION_AUTHOR_NAME = "Calvin Xu"
+SUBMISSION_AUTHOR_AFFILIATION = "Stanford University"
+SUBMISSION_AUTHOR_URL = "pinlinxu.com"
 
 
 # =========================
