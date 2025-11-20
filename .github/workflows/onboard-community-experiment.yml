@@ -55,7 +55,7 @@ jobs:
           author_slug="$(printf '%s' "$author_name" | to_slug)"
           issue_number="${{ github.event.issue.number }}"
           branch_slug="submission_${issue_number}"
-          branch_display="submission #${issue_number}"
+          branch_display="${author_name}: Submission #${issue_number}"
 
           # Compose branch and directory names
           branch_ref="${author_slug}/${branch_slug}"
