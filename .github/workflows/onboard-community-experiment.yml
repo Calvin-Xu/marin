@@ -250,7 +250,7 @@ jobs:
               "",
               "3. Start hacking!",
               "",
-              "If you would like Marin staff to review and run your experiment, [create a PR](https://github.com/marin-community/marin/compare/${branch}...${owner}:${repo}:${branch}) to sync changes in your branch.",
+              `If you would like Marin staff to review and run your experiment, **[create a PR](https://github.com/marin-community/marin/compare/${branch}...${owner}:${repo}:${branch})** to sync changes in your branch.`,
               "Please include the output of `print_run_info()` in the PR description, which you can obtain by dry-running the starter code",
               "```bash",
               "python marin/run/ray_run.py -- \\",
