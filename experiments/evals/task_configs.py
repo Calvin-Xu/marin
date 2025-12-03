@@ -311,6 +311,65 @@ SPECIALIZED_TASKS = (
     EvalTaskConfig("webqs", 0, task_alias="webqs_0shot"),
 )
 
+FINEWEB2_HQ_BELEBELE_TASKS = tuple(
+    EvalTaskConfig(task_name, 0, task_alias=alias)
+    for task_name, alias in (
+        ("belebele_arb_Arab", "belebele_arb_Arab"),
+        ("belebele_rus_Cyrl", "belebele_rus_Cyrl"),
+        ("belebele_zho_Hans", "belebele_cmn_Hani"),
+        ("belebele_deu_Latn", "belebele_deu_Latn"),
+        ("belebele_spa_Latn", "belebele_spa_Latn"),
+        ("belebele_jpn_Jpan", "belebele_jpn_Jpan"),
+        ("belebele_fra_Latn", "belebele_fra_Latn"),
+        ("belebele_ita_Latn", "belebele_ita_Latn"),
+        ("belebele_por_Latn", "belebele_por_Latn"),
+        ("belebele_pol_Latn", "belebele_pol_Latn"),
+        ("belebele_nld_Latn", "belebele_nld_Latn"),
+        ("belebele_ind_Latn", "belebele_ind_Latn"),
+        ("belebele_tur_Latn", "belebele_tur_Latn"),
+        ("belebele_ces_Latn", "belebele_ces_Latn"),
+        ("belebele_pes_Arab", "belebele_fas_Arab"),
+        ("belebele_hun_Latn", "belebele_hun_Latn"),
+        ("belebele_swe_Latn", "belebele_swe_Latn"),
+        ("belebele_ell_Grek", "belebele_ell_Grek"),
+        ("belebele_dan_Latn", "belebele_dan_Latn"),
+        ("belebele_vie_Latn", "belebele_vie_Latn"),
+    )
+)
+
+MGSM_MULTILINGUAL_TASKS = (
+    EvalTaskConfig("mgsm_direct_de", 0, task_alias="mgsm_direct_de_0shot"),
+    EvalTaskConfig("mgsm_direct_es", 0, task_alias="mgsm_direct_es_0shot"),
+    EvalTaskConfig("mgsm_direct_fr", 0, task_alias="mgsm_direct_fr_0shot"),
+    EvalTaskConfig("mgsm_direct_ja", 0, task_alias="mgsm_direct_ja_0shot"),
+    EvalTaskConfig("mgsm_direct_ru", 0, task_alias="mgsm_direct_ru_0shot"),
+    EvalTaskConfig("mgsm_direct_zh", 0, task_alias="mgsm_direct_zh_0shot"),
+)
+
+XSTORYCLOZE_MULTILINGUAL_TASKS = (
+    EvalTaskConfig("xstorycloze_ar", 0, task_alias="xstorycloze_ar_0shot"),
+    EvalTaskConfig("xstorycloze_es", 0, task_alias="xstorycloze_es_0shot"),
+    EvalTaskConfig("xstorycloze_id", 0, task_alias="xstorycloze_id_0shot"),
+    EvalTaskConfig("xstorycloze_ru", 0, task_alias="xstorycloze_ru_0shot"),
+    EvalTaskConfig("xstorycloze_zh", 0, task_alias="xstorycloze_zh_0shot"),
+)
+
+MULTILINGUAL_LM_EVAL_LOGPROB_TASKS = (
+    FINEWEB2_HQ_BELEBELE_TASKS
+    + XSTORYCLOZE_MULTILINGUAL_TASKS
+    + (
+        EvalTaskConfig("cmmlu", 0, task_alias="cmmlu_0shot"),
+        EvalTaskConfig("agieval", 0, task_alias="agieval_0shot"),
+        EvalTaskConfig("kmmlu", 0, task_alias="kmmlu_0shot"),
+        EvalTaskConfig("lm_syneval", 0, task_alias="lm_syneval_0shot"),
+        EvalTaskConfig("zhoblimp", 0, task_alias="zhoblimp_0shot"),
+        EvalTaskConfig("turblimp_core", 0, task_alias="turblimp_core_0shot"),
+        EvalTaskConfig("blimp_nl", 0, task_alias="blimp_nl_0shot"),
+    )
+)
+
+MULTILINGUAL_LM_EVAL_GENERATIVE_TASKS = MGSM_MULTILINGUAL_TASKS
+
 
 def convert_to_levanter_task_config(tasks: Sequence[EvalTaskConfig]) -> list[TaskConfig]:
     """
